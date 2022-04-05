@@ -1,5 +1,15 @@
 <template>
     <div>
-        <h1>This is the inventory page</h1>
+        <h1>Hello World</h1>
     </div>
 </template>
+
+<script>
+
+export default ({
+    name: 'InventoryView',
+    components: {
+        
+    }
+})
+</script>
