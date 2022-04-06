@@ -1,17 +1,20 @@
 <template>
-    <div class="itemList">
-        <Item />
+    <div>
+        <ItemTable />
+        <InventoryChart />
     </div>
 </template>
 
 <script>
 
-import Item from '../components/inventory/Item.vue'
+import ItemTable from '../components/inventory/ItemTable.vue'
+import InventoryChart from '../components/inventory/inventoryUtil/InventoryChart.vue'
 
 export default ({
     name: 'InventoryView',
     components: {
-        Item
+        ItemTable,
+        InventoryChart
     }
 })
 </script>

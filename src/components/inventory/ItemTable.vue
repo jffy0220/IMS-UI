@@ -76,23 +76,13 @@
 
 <script>
 
-import PrettyList from '../util/PrettyList.vue'
-
 export default ({
     name: 'Item',
     components: {
-        PrettyList
     },
     data () {
         return {
-            itemlist: [
-                {
-                    name: "A-12-HP-C-230B"
-                },
-                {
-                    name: "DIY-12-HP-C-230B"
-                }
-            ]
+            
         }
     }
 })
