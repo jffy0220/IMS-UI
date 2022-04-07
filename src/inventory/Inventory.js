@@ -6,6 +6,7 @@ import AdvanceTablePagination from 'common/AdvanceTable/AdvanceTablePagination'
 import AdvanceTableSearchBox from 'common/AdvanceTable/AdvanceTableSearchBox'
 import AdvanceTableWrapper from 'common/AdvanceTable/AdvanceTableWrapper'
 import FalconComponentCard from 'common/FalconComponentCard'
+import { Table } from 'react-bootstrap'
 
 const audienceChart = {
     users: [
@@ -124,11 +125,6 @@ const Inventory = () => {
         <>
             <Row className="g-3 mb-3">
                 <Col xxl={8}>
-                    <InventoryGraph chartData={audienceChart} className="mb-3" />
-                </Col>
-            </Row>
-            <Row className="g-3 mb-3">
-                <Col xxl={8}>
                     <AdvanceTableWrapper
                         columns={columns}
                         data={data}
@@ -166,7 +162,56 @@ const Inventory = () => {
                     </AdvanceTableWrapper>
                 </Col>
             </Row>
-        </>
+
+            <Row className="g-3 mb-3">
+                <Col xxl={8}>
+                    <InventoryGraph chartData={audienceChart} className="mb-3" />
+                </Col>
+            </Row>
+
+            <Row className="g-3 mb-3">
+                <Col lg={7}>
+                    <Row className="align-items-stretch h-100">
+                        <Col xs={12} className="mb-3">
+                            <Table bordered hovered responsive>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Purchase Order</th>
+                                        <th scope="col">Number Items</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>ABC123</td>
+                                        <td>5</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col xs={12}>
+                            <Table bordered hovered responsive>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Order Number</th>
+                                        <th scope="col">Number Ordered</th>
+                                        <th scope="col">Order Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>123ABC</td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
+        </> 
     )
 }
 
