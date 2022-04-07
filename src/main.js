@@ -1,21 +1,76 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import 'bootstrap/dist/css/bootstrap.css'
-import './assets/theme.min.css'
-import "bootstrap"
+import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
+import AppContext from 'context/Context';
+import { settings } from './config';
+import { getColor, getItemFromStore } from 'helpers/utils';
+import { configReducer } from './reducers/configReducer';
+import useToggleStyle from './hooks/useToggleStyle';
 
-// Do we need to import it this way, can we just use CSS classes? 
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { faBell } from '@fortawesome/free-regular-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+const Main = props => {
+  const configState = {
+    isFluid: getItemFromStore('isFluid', settings.isFluid),
+    isRTL: getItemFromStore('isRTL', settings.isRTL),
+    isDark: getItemFromStore('isDark', settings.isDark),
+    navbarPosition: getItemFromStore('navbarPosition', settings.navbarPosition),
+    isNavbarVerticalCollapsed: getItemFromStore(
+      'isNavbarVerticalCollapsed',
+      settings.isNavbarVerticalCollapsed
+    ),
+    navbarStyle: getItemFromStore('navbarStyle', settings.navbarStyle),
+    currency: settings.currency,
+    showBurgerMenu: settings.showBurgerMenu,
+    showSettingPanel: false,
+    navbarCollapsed: false
+  };
 
-import { dom } from '@fortawesome/fontawesome-svg-core'
-dom.watch()
+  const [config, configDispatch] = useReducer(configReducer, configState);
 
+  const { isLoaded } = useToggleStyle(
+    config.isRTL,
+    config.isDark,
+    configDispatch
+  );
 
-const app = createApp(App)
+  const setConfig = (key, value) => {
+    configDispatch({
+      type: 'SET_CONFIG',
+      payload: {
+        key,
+        value,
+        setInStore: [
+          'isFluid',
+          'isRTL',
+          'isDark',
+          'navbarPosition',
+          'isNavbarVerticalCollapsed',
+          'navbarStyle'
+        ].includes(key)
+      }
+    });
+  };
 
-app.use(router)
+  if (!isLoaded) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          backgroundColor: config.isDark ? getColor('dark') : getColor('light')
+        }}
+      />
+    );
+  }
 
-app.mount('#app')
+  return (
+    <AppContext.Provider value={{ config, setConfig, configDispatch }}>
+      {props.children}
+    </AppContext.Provider>
+  );
+};
+
+Main.propTypes = { children: PropTypes.node };
+
+export default Main;
