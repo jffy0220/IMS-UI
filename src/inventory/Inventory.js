@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import InventoryGraph from './util/InventoryGraph'
 import AdvanceTable from 'common/AdvanceTable/AdvanceTable'
 import AdvanceTableFooter from 'common/AdvanceTable/AdvanceTableFooter'
@@ -170,45 +170,51 @@ const Inventory = () => {
             </Row>
 
             <Row className="g-3 mb-3">
-                <Col lg={7}>
-                    <Row className="align-items-stretch h-100">
-                        <Col xs={12} className="mb-3">
-                            <Table bordered hovered responsive>
+                <Col>
+                    <Card>
+                        <Card.Header>
+                            Purchase Orders
+                        </Card.Header>
+                        <Card.Body>
+                            <Table bordered responsive>
                                 <thead>
                                     <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Purchase Order</th>
-                                        <th scope="col">Number Items</th>
+                                        <td>Test</td>
+                                        <td>test 2</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td>ABC123</td>
-                                        <td>5</td>
+                                        <td>Hello World</td>
+                                        <td>Hello world 2</td>
                                     </tr>
                                 </tbody>
                             </Table>
-                        </Col>
-                        <Col xs={12}>
-                            <Table bordered hovered responsive>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                <Card>
+                        <Card.Header>
+                            Purchase Orders
+                        </Card.Header>
+                        <Card.Body>
+                            <Table bordered responsive>
                                 <thead>
                                     <tr>
-                                        <th scope="col">Order Number</th>
-                                        <th scope="col">Number Ordered</th>
-                                        <th scope="col">Order Status</th>
+                                        <td>Test</td>
+                                        <td>test 2</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td>123ABC</td>
-                                        <td>1</td>
+                                        <td>Hello World</td>
+                                        <td>Hello world 2</td>
                                     </tr>
                                 </tbody>
                             </Table>
-                        </Col>
-                    </Row>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </> 
