@@ -196,7 +196,7 @@ const Inventory = () => {
                 <Col>
                 <Card>
                         <Card.Header>
-                            Purchase Orders
+                            Sales Orders
                         </Card.Header>
                         <Card.Body>
                             <Table bordered responsive>
