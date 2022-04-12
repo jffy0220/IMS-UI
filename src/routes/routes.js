@@ -18,6 +18,33 @@ export const dashboardRoutes = {
     ]
 }
 
+export const orderRoutes = {
+    label: 'Orders',
+    labelDisable: true,
+    children: [
+        {
+            name: 'Orders',
+            active: true,
+            icon: 'chart-pie',
+            children: [
+                {
+                    name: 'Orders',
+                    to: '/orders',
+                    exact: true,
+                    active: true
+                },
+                {
+                    name: 'Order Details',
+                    to: '/order-details',
+                    exact: true,
+                    active: true
+                }
+            ]
+        }
+    ]
+}
+
 export default [
-    dashboardRoutes
+    dashboardRoutes,
+    orderRoutes
 ]

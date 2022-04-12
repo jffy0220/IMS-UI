@@ -125,41 +125,47 @@ const Inventory = () => {
         <>
             <Row className="g-3 mb-3">
                 <Col xxl={8}>
-                    <AdvanceTableWrapper
-                        columns={columns}
-                        data={data}
-                        sortable
-                        pagination
-                        perPage={5}
-                    >
-                        <Row className="flex-end-center mb-3">
-                            <Col xs="auto" sm={6} lg={4}>
-                                <AdvanceTableSearchBox table/>
-                            </Col>
-                        </Row>
+                    <Card>
+                        <Card.Body>
+                            <h5>Inventory</h5>
+                            <AdvanceTableWrapper
+                                columns={columns}
+                                data={data}
+                                sortable
+                                pagination
+                                perPage={5}
+                            >
+                                <Row className="flex-end-center mb-3">
+                                    <Col xs="auto" sm={6} lg={4}>
+                                        <AdvanceTableSearchBox table/>
+                                    </Col>
+                                </Row>
 
-                        <AdvanceTable
-                            table
-                            headerClassName="bg-200 text-900 text-nowrap align-middle"
-                            rowClassName="align-middle white-space-nowrap"
-                            tableProps={{
-                                bordered: true,
-                                striped: true,
-                                className: 'fs--1 mb-0 overflow-hidden'
-                            }}
-                        />
+                                <AdvanceTable
+                                    table
+                                    headerClassName="bg-200 text-900 text-nowrap align-middle"
+                                    rowClassName="align-middle white-space-nowrap"
+                                    tableProps={{
+                                        bordered: true,
+                                        striped: true,
+                                        className: 'fs--1 mb-0 overflow-hidden'
+                                    }}
+                                />
 
-                        <div className="mt-3">
-                            <AdvanceTableFooter
-                                rowCount={data.length}
-                                table
-                                rowInfo
-                                navButtons
-                                rowsPerPageSelection
-                            />
-                        </div>
+                                <div className="mt-3">
+                                    <AdvanceTableFooter
+                                        rowCount={data.length}
+                                        table
+                                        rowInfo
+                                        navButtons
+                                        rowsPerPageSelection
+                                    />
+                                </div>
 
-                    </AdvanceTableWrapper>
+                            </AdvanceTableWrapper>
+                        </Card.Body>
+                    </Card>
+                    
                 </Col>
             </Row>
 
