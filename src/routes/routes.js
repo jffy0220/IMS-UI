@@ -28,7 +28,7 @@ export const orderRoutes = {
             icon: 'chart-pie',
             children: [
                 {
-                    name: 'Orders',
+                    name: 'Order Summary',
                     to: '/orders',
                     exact: true,
                     active: true
@@ -36,6 +36,32 @@ export const orderRoutes = {
                 {
                     name: 'Order Details',
                     to: '/order-details',
+                    exact: true,
+                    active: true
+                }
+            ]
+        }
+    ]
+}
+
+export const purchaseOrderRoutes = {
+    label: 'Purchase Order',
+    labelDisable: true,
+    children: [
+        {
+            name: 'Purchase Orders',
+            active: true,
+            icon: 'chart-pie',
+            children: [
+                {
+                    name: 'Purchase Order Summary',
+                    to: '/purchaseorders',
+                    exact: true,
+                    active: true
+                },
+                {
+                    name: 'Purchase Order Detail',
+                    to: '/purchaseorder-details',
                     exact: true,
                     active: true
                 }
