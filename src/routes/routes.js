@@ -80,6 +80,12 @@ export const returnRoutes = {
             icon: 'chart-pie',
             children: [
                 {
+                    name: 'Returns',
+                    to: '/returns',
+                    exact: true,
+                    active: true
+                },
+                {
                     name: 'Create New Return',
                     to: '/create-new-return',
                     exact: true,
