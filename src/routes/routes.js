@@ -72,5 +72,6 @@ export const purchaseOrderRoutes = {
 
 export default [
     dashboardRoutes,
-    orderRoutes
+    orderRoutes,
+    purchaseOrderRoutes
 ]

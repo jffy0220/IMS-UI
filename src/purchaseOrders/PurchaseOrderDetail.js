@@ -2,7 +2,8 @@ const { default: AdvanceTable } = require("common/AdvanceTable/AdvanceTable")
 const { default: AdvanceTableFooter } = require("common/AdvanceTable/AdvanceTableFooter")
 const { default: AdvanceTableSearchBox } = require("common/AdvanceTable/AdvanceTableSearchBox")
 const { default: AdvanceTableWrapper } = require("common/AdvanceTable/AdvanceTableWrapper")
-const { Card } = require("react-bootstrap")
+const { Card, Row, Col, ProgressBar } = require("react-bootstrap")
+import PageHeader from 'components/common/PageHeader'
 
 const columns = [
     {
@@ -82,6 +83,7 @@ const PurchaseOrderDetail = () => {
                     </Card>
                 </Col>
             </Row>
+            <br />
             <Row>
                 <Col>
                     <Card>
@@ -109,23 +111,15 @@ const PurchaseOrderDetail = () => {
                         <p className="fs--1 mt-1">Created by: Justin Farley</p>
                         <p className="fs--1 mt-1">Approved by: Ashley Farley</p>
                         <div>
-                            <strong className="me-2">Status:</strong>
+                            <strong className="me-2">Status: Approved</strong>
                             <Row>
                                 <ProgressBar now={50} variant="primary" />
-                            </Row>
-                            <Row>
-                                <Col>Ordered</Col>
-                                <Col>Approved</Col>
-                                <Col>Vendor Approved</Col>
-                                <Col>Shipped</Col>
-                                <Col>Received</Col>
-                                <Col>Closed</Col>
                             </Row>
                         </div>
                     </PageHeader>
                 </Col>
             </Row>
-
+            <br />
             <Row>
                 {/* Line Items */}
                 <Card>

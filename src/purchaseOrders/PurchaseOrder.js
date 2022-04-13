@@ -9,9 +9,56 @@ import 'leaflet.tilelayer.colorfilter'
 import 'leaflet/dist/leaflet.css'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { Row, Col } from 'react-bootstrap'
+import AdvanceTable from 'common/AdvanceTable/AdvanceTable'
+import { useContext } from 'react'
 
-const columns = []
-const data = []
+const columns = [
+    {
+        accessor: 'purchase_order_number',
+        Header: 'Purchase Order'
+    },
+    {
+        accessor: 'date_created',
+        Header: 'Date Created'
+    },
+    {
+        accessor: 'date_expected',
+        Header: 'Date Expected'
+    },
+    {
+        accessor: 'vendor',
+        Header: 'Vendor'
+    },
+    {
+        accessor: 'number_items',
+        Header: 'Number of Items'
+    },
+    {
+        accessor: 'date_received',
+        Header: 'Date Received'
+    },
+    {
+        accessor: 'approving_official',
+        Header: 'Approving Official'
+    },
+    {
+        accessor: 'total',
+        Header: 'Total'
+    }
+]
+const data = [
+    {
+        purchase_order_number: 'ABC123',
+        date_created: 'April 1, 2022',
+        date_expected: 'May 1, 2022',
+        vendor: 'Jffy Technologies',
+        number_items: '500',
+        date_received: '',
+        approving_official: 'Ashley Farley',
+        total: '$7,501.33'
+    }
+]
 
 const markers = [
     {
@@ -80,7 +127,7 @@ function LayerComponent() {
 
     useEffect(() => {
         if (map) {
-            L.titleLayer.colorFilter(
+            L.tileLayer.colorFilter(
                 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
                 {
                     attribution: null,
