@@ -7,6 +7,7 @@ import OrderDetails from 'orders/order-details'
 import Orders from 'orders/Orders'
 import PurchaseOrder from 'purchaseOrders/PurchaseOrder'
 import PurchaseOrderDetail from 'purchaseOrders/PurchaseOrderDetail'
+import CreateNewReturn from 'returns/CreateNewReturn'
 
 const Layout = () => {
 
@@ -26,6 +27,9 @@ const Layout = () => {
                     {/*Purchase Orders*/}
                     <Route path="purchaseorders" element={<PurchaseOrder />} />
                     <Route path="purchaseorder-details" element={<PurchaseOrderDetail />} />
+                    
+                    {/*Returns*/}
+                    <Route path="create-new-return" element={<CreateNewReturn />} />
                 </Route>
             </Routes>
         </>

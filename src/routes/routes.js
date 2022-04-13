@@ -70,8 +70,29 @@ export const purchaseOrderRoutes = {
     ]
 }
 
+export const returnRoutes = {
+    label: 'Returns',
+    labelDisable: true,
+    children: [
+        {
+            name: 'Returns',
+            active: true,
+            icon: 'chart-pie',
+            children: [
+                {
+                    name: 'Create New Return',
+                    to: '/create-new-return',
+                    exact: true,
+                    active: true
+                }
+            ]
+        }
+    ]
+}
+
 export default [
     dashboardRoutes,
     orderRoutes,
-    purchaseOrderRoutes
+    purchaseOrderRoutes,
+    returnRoutes
 ]
