@@ -12,6 +12,12 @@ export const dashboardRoutes = {
                     to: '/inventory',
                     exact: true,
                     active: true
+                },
+                {
+                    name: 'Item Management',
+                    to: '/item-management',
+                    exact: true,
+                    active: true
                 }
             ]
         }

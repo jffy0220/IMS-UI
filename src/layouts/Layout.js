@@ -9,6 +9,7 @@ import PurchaseOrder from 'purchaseOrders/PurchaseOrder'
 import PurchaseOrderDetail from 'purchaseOrders/PurchaseOrderDetail'
 import CreateNewReturn from 'returns/CreateNewReturn'
 import Return from 'returns/Return'
+import Item from 'inventory/item'
 
 const Layout = () => {
 
@@ -20,6 +21,7 @@ const Layout = () => {
 
                     {/*Inventory*/}
                     <Route path="inventory" element={<Inventory />} />
+                    <Route path="item-management" element={<Item />} />
 
                     {/*Orders*/}
                     <Route path="order-details" element={<OrderDetails />} />
