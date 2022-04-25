@@ -11,6 +11,7 @@ import CreateNewReturn from 'returns/CreateNewReturn'
 import Return from 'returns/Return'
 import Item from 'inventory/item'
 import UserManagement from 'users/UserManagement'
+import RoleManagement from 'roles/RoleManagement'
 
 const Layout = () => {
 
@@ -38,6 +39,7 @@ const Layout = () => {
 
                     {/*Management*/}
                     <Route path="/users" element={<UserManagement />} />
+                    <Route path="/roles" element={<RoleManagement />} />
                 </Route>
             </Routes>
         </>

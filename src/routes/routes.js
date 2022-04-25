@@ -116,6 +116,12 @@ export const managementRoutes = {
                     to: '/users',
                     exact: true,
                     active: true
+                },
+                {
+                    name: 'Roles',
+                    to: '/roles',
+                    exact: true,
+                    active: true
                 }
             ]
         }
