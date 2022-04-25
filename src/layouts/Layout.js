@@ -12,6 +12,7 @@ import Return from 'returns/Return'
 import Item from 'inventory/item'
 import UserManagement from 'users/UserManagement'
 import RoleManagement from 'roles/RoleManagement'
+import UserDetails from 'users/UserDetails'
 
 const Layout = () => {
 
@@ -40,6 +41,7 @@ const Layout = () => {
                     {/*Management*/}
                     <Route path="/users" element={<UserManagement />} />
                     <Route path="/roles" element={<RoleManagement />} />
+                    <Route path="/user-details" element={<UserDetails />} />
                 </Route>
             </Routes>
         </>
