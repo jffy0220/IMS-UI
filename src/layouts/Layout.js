@@ -10,6 +10,7 @@ import PurchaseOrderDetail from 'purchaseOrders/PurchaseOrderDetail'
 import CreateNewReturn from 'returns/CreateNewReturn'
 import Return from 'returns/Return'
 import Item from 'inventory/item'
+import UserManagement from 'users/UserManagement'
 
 const Layout = () => {
 
@@ -34,6 +35,9 @@ const Layout = () => {
                     {/*Returns*/}
                     <Route path="create-new-return" element={<CreateNewReturn />} />
                     <Route path="returns" element={<Return />} />
+
+                    {/*Management*/}
+                    <Route path="/users" element={<UserManagement />} />
                 </Route>
             </Routes>
         </>

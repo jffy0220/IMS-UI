@@ -102,9 +102,30 @@ export const returnRoutes = {
     ]
 }
 
+export const managementRoutes = {
+    label: 'Management',
+    labelDisable: true,
+    children: [
+        {
+            name: 'Management',
+            active: true,
+            icon: 'chart-pie',
+            children: [
+                {
+                    name: 'Users',
+                    to: '/users',
+                    exact: true,
+                    active: true
+                }
+            ]
+        }
+    ]
+}
+
 export default [
     dashboardRoutes,
     orderRoutes,
     purchaseOrderRoutes,
-    returnRoutes
+    returnRoutes,
+    managementRoutes
 ]
