@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Form, Button } from 'react-bootstrap'
+import { Row, Col, Form, Button, Card } from 'react-bootstrap'
 import AdvanceTable from 'common/AdvanceTable/AdvanceTable'
 import AdvanceTableFooter from 'common/AdvanceTable/AdvanceTableFooter'
 import AdvanceTablePagination from 'common/AdvanceTable/AdvanceTablePagination'
@@ -9,6 +9,7 @@ import { chartJsDefaultTooltip } from 'helpers/chartjs-utils'
 import { rgbaColor, getColor } from 'helpers/utils'
 import { Bar } from 'react-chartjs-2'
 import IconButton from 'components/common/IconButton'
+import OrderChart from './order-summary/orderLineChart'
 
 const columns = [
     {
@@ -113,6 +114,12 @@ const chart_data = {
     ]
 }
 
+const payment = {
+    all: [4, 1, 6, 2, 7, 12, 4, 6, 5, 4, 5, 10],
+    successful: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8],
+    failed: [1, 0, 2, 1, 2, 1, 1, 0, 0, 1, 0, 2]
+}
+
 function BulAction({ selectedRowIds }){
     return (
         <Row className="flex-between-center mb-3">
@@ -151,57 +158,49 @@ function BulAction({ selectedRowIds }){
     )
 }
 
+const getOptionsActiveUsers = data => ({
+    xAxis: {
+        show: false,
+        boundaryGap: false
+    },
+    series: [
+        {
+            data: data,
+            type: 'line,
+            symbol'
+        }
+    ]
+})
+
 const Orders = () => {
     return (
         <>
-            <Row>
-                <Col className="p-2 bg-300 border border-400">
-                    <AdvanceTableWrapper
-                        columns={columns}
-                        data={data}
-                        sortable
-                        pagination
-                        perPage={25}
-                        selection
-                        selectionColumnWidth={30}
-                    >
-                        <Row className="flex-end-center mb-3">
-                            <Col xs="auto" sm={6} lg={4}>
-                                <AdvanceTableSearchBox table/>
-                            </Col>
-                        </Row>
-
-                        <BulAction table/>
-
-                        <AdvanceTable
-                            table
-                            headerClassName="bg-200 text-900 text-nowrap align-middle"
-                            rowClassName="align-middle white-space-nowrap"
-                            tableProps={{
-                                bordered: true,
-                                striped: true,
-                                className: 'fs--1 mb-0 overflow-hidden'
-                            }}
-                        />
-
-                        <div className="mt-3">
-                            <AdvanceTableFooter
-                                rowCount={data.length}
-                                table
-                                rowInfo
-                                navButtons
-                                rowsPerPageSelection
-                            />
-                        </div>
-                    </AdvanceTableWrapper>
+            <Row className="g-3">
+                <Col xxl={9}>
+                    <OrderChart data={payment} />
                 </Col>
-                <Col xs lg="4" className="p-2 bg-300 border border-400">
-                    <Bar 
-                        data={chart_data}
-                        options={chart_options}
-                        height={1000}
-                        width={1618}
-                    />
+                <Col>
+                    <Row classNmae="g-3">
+                        <Col md={4} xxl={12}>
+                            <Card className="h-100">
+                                <Card.Body>
+                                    <Row className="flex-between-center g-0">
+                                        <Col xs={6} className="d-lg-block flex-between-center">
+                                            <h6 className="mb-2 text-900">Active Users</h6>
+                                            <h4 classNmae="fs-3 fw-normal text-700 mb-0">765k</h4>
+                                        </Col>
+                                        <Col xs="auto" className="h-100">
+                                            <BasicECharts
+                                                echarts={echarts}
+                                                options={getOptions(data)}
+                                                style={{height: '50px', minWidth: '80px' }}
+                                            />
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </>
