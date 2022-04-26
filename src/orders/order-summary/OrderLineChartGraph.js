@@ -1,7 +1,17 @@
 const { default: AppContext } = require("context/Context");
-const { getColor } = require("helpers/utils");
 const { propTypes } = require("react-bootstrap/esm/Image");
+import { forwardRef, useContext } from "react";
+import PropTypes from 'prop-types';
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import { getColor, rgbaColor } from "helpers/utils";
 
+const payment = {
+    all: [4, 1, 6, 2, 7, 12, 4, 6, 5, 4, 5, 10],
+    successful: [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8],
+    failed: [1, 0, 2, 1, 2, 1, 1, 0, 0, 1, 0, 2]
+};
 
 const getOption = (data, paymentStatus, isDark) => ({
     tooltip: {
@@ -136,14 +146,14 @@ const OrderLineChartGraph = forwardRef(({ data, paymentStatus, style }, ref) => 
         <ReactEChartsCore
             echarts={echarts}
             ref={ref}
-            option={getOption(data, paymentStatus, isDark)}
+            option={getOption(payment, paymentStatus, isDark)}
             style={style}
         />
     )
 })
 
 OrderLineChartGraph.propTypes = {
-    data: propTypes.shape({
+    data: PropTypes.shape({
         all: PropTypes.array,
         successful: PropTypes.array,
         failed: PropTypes.array

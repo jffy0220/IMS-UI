@@ -10,6 +10,12 @@ import { rgbaColor, getColor } from 'helpers/utils'
 import { Bar } from 'react-chartjs-2'
 import IconButton from 'components/common/IconButton'
 import OrderChart from './order-summary/orderLineChart'
+import SoftBadge from 'components/common/SoftBadge'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import BasicECharts from 'components/common/BasicEChart'
+import * as echarts from 'echarts/core'
+import { LineChart } from 'echarts/charts'
+import CountUp from 'react-countup'
 
 const columns = [
     {
@@ -166,10 +172,30 @@ const getOptionsActiveUsers = data => ({
     series: [
         {
             data: data,
-            type: 'line,
-            symbol'
+            type: 'line',
+            symbol: 'none',
+            areaStyle: {
+                color: {
+                    type: 'linear',
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [
+                        {
+                            offset: 0,
+                            color: rgbaColor(getColor('primary'), 0.25)
+                        },
+                        {
+                            offset: 1,
+                            color: rgbaColor(getColor('primary'), 0)
+                        }
+                    ]
+                }
+            }
         }
-    ]
+    ],
+    grid: { right: '0px', left: '0px', bottom: '0px', top: '0px' }
 })
 
 const Orders = () => {
@@ -192,7 +218,7 @@ const Orders = () => {
                                         <Col xs="auto" className="h-100">
                                             <BasicECharts
                                                 echarts={echarts}
-                                                options={getOptions(data)}
+                                                options={getOptionsActiveUsers(data)}
                                                 style={{height: '50px', minWidth: '80px' }}
                                             />
                                         </Col>
@@ -200,8 +226,107 @@ const Orders = () => {
                                 </Card.Body>
                             </Card>
                         </Col>
+                        <br />
+                        <Col md={4} xxl={12}>
+                            <Card className="h-100">
+                                <Card.Body>
+                                    <Row className="flex-between-center">
+                                        <Col className="d-md-flex d-lg-block flex-between-center">
+                                            <h6 className="mb-md-0 mb-lg-2">Revenue</h6>
+                                            <SoftBadge bg="success" pill>
+                                                <FontAwesomeIcon icon="caret-up" /> 61.8%
+                                            </SoftBadge>
+                                        </Col>
+                                        <Col xs="auto">
+                                            <h4 className="fs-3 fw-normal text-700">
+                                                <CountUp
+                                                    start={0}
+                                                    end={82.18}
+                                                    duration={2.75}
+                                                    suffix={'M'}
+                                                    prefix={'$'}
+                                                    decimals={2}
+                                                    decimal="."
+                                                />
+                                            </h4>
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                        <Col md={4} xxl={12}>
+                            <Card className="h-100">
+                                <Card.Body>
+                                    <Row className="flex-between-center">
+                                        <Col className="d-md-flex d-lg-block flex-between-center">
+                                            <h6 className="mb-md-0 mb-lg-2">Conversion</h6>
+                                            <SoftBadge bg="success" pill>
+                                                <FontAwesomeIcon icon="caret-up" /> 61.8%
+                                            </SoftBadge>
+                                        </Col>
+                                        <Col xs="auto">
+                                            <h4 className="fs-3 fw-normal text-700">
+                                                <CountUp
+                                                    start={0}
+                                                    end={82.18}
+                                                    duration={2.75}
+                                                    suffix={'M'}
+                                                    prefix={'$'}
+                                                    decimals={2}
+                                                    decimal="."
+                                                />
+                                            </h4>
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                        </Col>
                     </Row>
                 </Col>
+            </Row>
+            <br />
+            <Row>
+                <Card>
+                    <Card.Body>
+                        <AdvanceTableWrapper
+                            columns={columns}
+                            data={data}
+                            sortable
+                            pagination
+                            perPage={25}
+                            selection
+                            selectionColumnWidth={30}
+                        >
+                            <Row className="flex-end-center mb-3">
+                                <Col xs="auto" sm={6} lg={4}>
+                                    <AdvanceTableSearchBox table/>
+                                </Col>
+                            </Row>
+
+                            <BulAction table/>
+
+                            <AdvanceTable
+                                table
+                                headerClassName='bg-200 text-900 text-nowrap align-middle'
+                                rowClassName='align-middle white-space-nowrap'
+                                tableProps={{
+                                    striped: true,
+                                    className: 'fs--1 mb-0 overflow-hidden'
+                                }}
+                            />
+
+        <                   div className="mt-3">
+                                <AdvanceTableFooter
+                                    rowCount={data.length}
+                                    table
+                                    rowInfo
+                                    navButtons
+                                    rowsPerPageSelection
+                                />
+                            </div>
+                        </AdvanceTableWrapper>
+                    </Card.Body>
+                </Card>
             </Row>
         </>
     )
