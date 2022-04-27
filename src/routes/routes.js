@@ -102,6 +102,26 @@ export const returnRoutes = {
     ]
 }
 
+export const warehouseRoutes = {
+    label: 'Warehouse',
+    labelDisabel: true,
+    children: [
+        {
+            name: 'Warehouse',
+            active: true,
+            icon: 'chart-pie',
+            children: [
+                {
+                    name: 'Warehouse Summary',
+                    to: '/warehouse-summary',
+                    exact: true,
+                    active: true,
+                }
+            ]
+        }
+    ]
+}
+
 export const managementRoutes = {
     label: 'Management',
     labelDisable: true,
@@ -139,5 +159,6 @@ export default [
     orderRoutes,
     purchaseOrderRoutes,
     returnRoutes,
-    managementRoutes
+    managementRoutes,
+    warehouseRoutes
 ]
